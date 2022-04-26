@@ -1,49 +1,59 @@
 package zooAnimales;
 import java.util.ArrayList;
-
-public class Anfibio extends Animal{
-	private static ArrayList<Anfibio> listado = new ArrayList<Anfibio>();
-	public static int ranas;
-	public static int salamandras;
+public class Anfibio extends Animal {
+	static private ArrayList<Anfibio> listado=new ArrayList<>();
+	static public int ranas;
+	static public int salamandras;
 	private String colorPiel;
 	private boolean venenoso;
-	public static int i = 0;
+	
+	public Anfibio() {
+		listado.add(this);}
 	
 	public String getColorPiel() {
-		return colorPiel;
-	}
+		return colorPiel;}
 	public void setColorPiel(String colorPiel) {
-		this.colorPiel = colorPiel;
-	}
+		this.colorPiel=colorPiel;}
+	
+	
 	public boolean isVenenoso() {
-		return venenoso;
-	}
+		return venenoso;}
 	public void setVenenoso(boolean venenoso) {
-		this.venenoso = venenoso;
-	}
-	public Anfibio(String nombre, int edad, String habitat, String genero, String colorPiel, boolean venenoso) {
-		super(nombre, edad, habitat, genero);
-		this.colorPiel = colorPiel;
-		this.venenoso = venenoso;
-		listado.add(this);
-	}
-	public Anfibio() {
-		listado.add(this);
-	}
-	public static int cantidadAnfibios() {
-		return listado.size();
-	}	
+		this.venenoso=venenoso;}
+	
+	public void setListado(ArrayList<Anfibio> listado) {
+		this.listado=listado;}
+	public static ArrayList<Anfibio> getListado(){
+		return listado;}
+	
+	
+	public Anfibio(String nombre,int edad,String habitat,String genero,String colorPiel,boolean venenoso) {
+		super(nombre,edad,habitat,genero);
+		this.colorPiel=colorPiel;
+		this.venenoso=venenoso;
+		listado.add(this);}
+	
 	public String movimiento() {
-		return "saltar";
-	}
-	public static Anfibio crearRana(String nombre, int edad, String genero) {
-		Anfibio rana = new Anfibio(nombre, edad, "oceano", genero, "rojo", true);
+		return "saltar";}
+	
+	public static Anfibio crearRana(String nombre,int edad, String genero) {
+		Anfibio a=new Anfibio();
+		a.setEdad(edad);a.setGenero(genero);a.setNombre(nombre);
+		a.colorPiel ="rojo"; a.venenoso = true ;a.setHabitat("selva");
 		ranas++;
-		return rana;
-	}
-	public static Anfibio crearSalamandra(String nombre, int edad, String genero) {
-		Anfibio salamandra = new Anfibio(nombre, edad, "oceano", genero, "negro y amarillo", false);
+		listado.add(a);
+		return a;}
+	
+	public static Anfibio crearSalamandra(String nombre,int edad, String genero) {
+		Anfibio a=new Anfibio();
+		a.setEdad(edad);a.setGenero(genero);a.setNombre(nombre);
+		a.colorPiel ="negro y amarillo"; a.venenoso = false ;a.setHabitat("selva");
 		salamandras++;
-		return salamandra;
+		listado.add(a);
+		return a;}
+	
+	public static int cantidadAnfibios() {
+		return ranas+salamandras;
 	}
+
 }

@@ -1,46 +1,55 @@
 package zooAnimales;
 import java.util.ArrayList;
 public class Ave extends Animal {
-	private static ArrayList<Ave> listado = new ArrayList<Ave>();
-	public static int halcones;
-	public static int aguilas;
+	static private ArrayList<Ave> listado=new ArrayList<>();
+	static public int halcones;
+	static public int aguilas;
 	private String colorPlumas;
-	public static int i = 0;
 	
-	public static ArrayList<Ave> getListado() {
-		return listado;
-	}
-	public static void setListado(ArrayList<Ave> listado) {
-		Ave.listado = listado;
-	}
-	public String getColorPlumas() {
-		return colorPlumas;
-	}
-	public void setColorPlumas(String colorPlumas) {
-		this.colorPlumas = colorPlumas;
-	}
-	public Ave(String nombre, int edad, String habitat, String genero, String colorPlumas) {
-		super(nombre, edad, habitat, genero);
-		this.colorPlumas = colorPlumas;
-		listado.add(this);
-	}
+	
+	public void setListado(ArrayList<Ave> listado) {
+		this.listado=listado;}
+	public  static ArrayList<Ave>  getListado(){
+		return listado;}
+	
+	public Ave(String nombre,int edad,String habitat,String genero,String colorPlumas) {
+		super(nombre,edad,habitat,genero);
+		this.colorPlumas=colorPlumas;
+		listado.add(this);}
 	public Ave() {
-		listado.add(this);
-	}
+		listado.add(this);}
+	
+	public void setColorPlumas(String colorPlumas) {
+		this.colorPlumas=colorPlumas;}
+	public String getColorPlumas() {
+		return colorPlumas;}
+
+	
+	public static Ave crearHalcon(String nombre,int edad,String genero) {
+		Ave a=new Ave();
+		a.setEdad(edad);a.setGenero(genero);a.setNombre(nombre);
+		a.colorPlumas="cafe glorioso";
+		a.setHabitat("montanas");
+		a.halcones++;
+		listado.add(a);
+		return a;}
+	
+	public static  Ave crearAguila(String nombre,int edad,String genero) {
+		Ave a=new Ave();
+		a.setEdad(edad);a.setGenero(genero);a.setNombre(nombre);
+		a.colorPlumas="blanco y amarillo";
+		a.setHabitat("montanas");
+		aguilas++;
+		listado.add(a);
+		return a;}
+	
+	
 	public static int cantidadAves() {
-		return listado.size();
-	}
+		return halcones+aguilas;}
+	
 	public String movimiento() {
 		return "volar";
 	}
-	public static Ave crearHalcon(String nombre, int edad, String genero) {
-		Ave halcon = new Ave(nombre, edad, "montanas", genero, "cafe glorioso");
-		halcones++;
-		return halcon;
-	}
-	public static Ave crearAguila(String nombre, int edad, String genero) {
-		Ave aguila = new Ave(nombre, edad, "montanas", genero, "blanco y amarillo");
-		aguilas++;
-		return aguila;
-	}
+	
+
 }
